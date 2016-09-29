@@ -7,9 +7,7 @@ var AppView = Backbone.View.extend({
 
     var appView = this;
     this.playerView.$el.on('ended', function() {
-      //appView.playerView.model.dequeue();
-      appView.model.get('songQueue').shift();
-      appView.model.get('songQueue').playFirst();
+      appView.model.Dequeuer();
     });
 
     // change:currentSong - this is Backbone's way of allowing you to filter events to
