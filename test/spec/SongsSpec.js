@@ -29,11 +29,11 @@ describe('Songs', function() {
       xhr.restore();
     });
 
-    // it('should GET song data from Parse when initialized', function() {
-    //   songs = new Songs();
-    //   expect(requests[0].method).to.equal('GET');
-    //   expect(requests[0].url).to.include('https://api.parse.com/1/classes/songs');
-    // });
+    it('should GET song data from Parse when initialized', function() {
+      songs = new Songs();
+      expect(requests[0].method).to.equal('GET');
+      expect(requests[0].url).to.include('https://api.parse.com/1/classes/songs');
+    });
 
     it('should populate itself with the data returned from the Parse server', function() {
       songs = new Songs();

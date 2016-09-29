@@ -9,16 +9,18 @@ var Songs = Backbone.Collection.extend({
     var songReq = new XMLHttpRequest();
     songReq.open('GET', 'https://api.parse.com/1/classes/songs/', true);
 
-    var songLoadedCount = 0;
+    var loadedCount = 0;
     songReq.onload = (function () {
       results = JSON.parse(songReq.responseText).results;
       
-      if (songLoadedCount < results.length ) {
-        this.add(results[songLoadedCount]);
-        songLoadedCount++;
+      if (loadedCount < results.length) {
+        this.add(results[loadedCount]);
+        loadedCount++;
+      } 
+      if (loadedCount === results.length) {
+        this.trigger('fetched', this);
       }
     }).bind(this);
-
-    
+ 
   }
 });
