@@ -13,6 +13,11 @@ describe('SongQueue', function() {
       url: '/test/testsong2.mp3',
       title: 'test song 2'
     };
+    songData3 = {
+      url: 'mp3s/A Third Song.mp3',
+      title: 'The Third Song',
+      artist: 'Aaliyah'
+    };
   });
 
   afterEach(function() {
@@ -73,6 +78,18 @@ describe('SongQueue', function() {
       songQueue.playFirst();
       expect(songQueue.at(0).play).to.have.been.called;
       SongModel.prototype.play.restore();
+    });
+  });
+
+  describe('remove a chosen song', function() {
+    it('remove a song from a queue', function() {
+      var songQueue = new SongQueue([songData1, songData2, songData3]);
+      var song1 = songQueue.at(0);
+      var song2 = songQueue.at(1);
+      var song3 = songQueue.at(2);
+      songQueue.removeSong(songQueue.at(1));
+      expect(songQueue.length).to.equal(2);
+      expect(songQueue.at(0)).to.equal(song1);
     });
   });
 });
