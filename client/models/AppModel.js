@@ -20,6 +20,7 @@ var AppModel = Backbone.Model.extend({
     // });
 
     //list of things that we tried:
+
     params.library.on('play', function(song) {
       this.set('currentSong', song);
     }, this);

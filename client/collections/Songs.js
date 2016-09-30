@@ -12,7 +12,6 @@ var Songs = Backbone.Collection.extend({
     var loadedCount = 0;
     songReq.onload = (function () {
       results = JSON.parse(songReq.responseText).results;
-      
       if (loadedCount < results.length) {
         this.add(results[loadedCount]);
         loadedCount++;
